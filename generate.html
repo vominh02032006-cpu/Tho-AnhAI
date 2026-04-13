@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tạo Thơ AI — PoetryAI</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="generate.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="gallery.html">Thư Viện</a></li>
+      <li><a href="generate.html" class="active">Tạo Thơ</a></li>
+      <li><a href="guide.html">Trạm AI</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+    </ul>
+    <a href="auth.html" class="btn-nav">Đăng Nhập</a>
+  </nav>
+
+  <div class="gen-page">
+    <!-- LEFT: FORM -->
+    <div class="gen-left">
+      <div class="gen-header">
+        <span class="page-hero-tag">✦ AI Sáng Tác</span>
+        <h1>Tạo Thơ<br /><em>Của Riêng Bạn</em></h1>
+        <p>Nhập cảm xúc hoặc chủ đề — AI sẽ tạo bài thơ và hình ảnh trong vài giây.</p>
+      </div>
+
+      <div class="gen-form">
+        <div class="form-group">
+          <label>Chủ đề / Cảm xúc <span class="required">*</span></label>
+          <input type="text" id="poemTopic" placeholder="Ví dụ: mưa, nhớ nhà, mùa thu, tình yêu..." maxlength="100" />
+          <span class="char-count" id="charCount">0/100</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phong cách thơ</label>
+            <div class="style-options">
+              <label class="style-opt active" data-value="luc-bat">
+                <input type="radio" name="style" value="luc-bat" checked hidden />
+                <span class="opt-name">Lục Bát</span>
+                <span class="opt-desc">Truyền thống</span>
+              </label>
+              <label class="style-opt" data-value="tu-tuyet">
+                <input type="radio" name="style" value="tu-tuyet" hidden />
+                <span class="opt-name">Tứ Tuyệt</span>
+                <span class="opt-desc">4 câu</span>
+              </label>
+              <label class="style-opt" data-value="hien-dai">
+                <input type="radio" name="style" value="hien-dai" hidden />
+                <span class="opt-name">Hiện Đại</span>
+                <span class="opt-desc">Tự do</span>
+              </label>
+              <label class="style-opt" data-value="haiku">
+                <input type="radio" name="style" value="haiku" hidden />
+                <span class="opt-name">Haiku</span>
+                <span class="opt-desc">3 câu</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Cảm xúc chủ đạo</label>
+          <div class="mood-options">
+            <button class="mood-btn active" data-mood="buon">😢 Buồn</button>
+            <button class="mood-btn" data-mood="vui">😊 Vui</button>
+            <button class="mood-btn" data-mood="nho">💭 Nhớ nhung</button>
+            <button class="mood-btn" data-mood="binh-yen">🌿 Bình yên</button>
+            <button class="mood-btn" data-mood="lang-man">💕 Lãng mạn</button>
+            <button class="mood-btn" data-mood="huyen-bi">✨ Huyền bí</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Tông màu hình ảnh</label>
+          <div class="color-options">
+            <button class="color-btn active" data-color="warm" style="--c:#e8a87c">☀ Ấm Áp</button>
+            <button class="color-btn" data-color="cool" style="--c:#7cb9e8">❄ Lạnh</button>
+            <button class="color-btn" data-color="dreamy" style="--c:#b07ce8">🌙 Mơ Mộng</button>
+            <button class="color-btn" data-color="dark" style="--c:#4a4a6a">🌑 Tối</button>
+            <button class="color-btn" data-color="nature" style="--c:#7cb87c">🌿 Thiên Nhiên</button>
+          </div>
+        </div>
+
+        <button class="btn-generate" id="generateBtn" onclick="generatePoem()">
+          <span class="btn-icon">✦</span>
+          <span id="btnText">Tạo Thơ</span>
+        </button>
+
+        <!-- QUICK PROMPTS -->
+        <div class="quick-prompts">
+          <span class="qp-label">Gợi ý nhanh:</span>
+          <button class="qp-btn" onclick="setTopic('mưa chiều')">mưa chiều</button>
+          <button class="qp-btn" onclick="setTopic('nhớ mẹ')">nhớ mẹ</button>
+          <button class="qp-btn" onclick="setTopic('mùa thu')">mùa thu</button>
+          <button class="qp-btn" onclick="setTopic('biển xanh')">biển xanh</button>
+          <button class="qp-btn" onclick="setTopic('tình yêu đầu')">tình yêu đầu</button>
+          <button class="qp-btn" onclick="setTopic('hoàng hôn')">hoàng hôn</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: RESULT -->
+    <div class="gen-right">
+      <div class="result-placeholder" id="resultPlaceholder">
+        <div class="placeholder-icon">✦</div>
+        <h3>Bài thơ của bạn<br />sẽ hiện ra ở đây</h3>
+        <p>Điền thông tin bên trái và nhấn "Tạo Thơ" để bắt đầu.</p>
+      </div>
+
+      <div class="result-content" id="resultContent" style="display:none;">
+        <div class="result-img-wrap">
+          <img id="resultImg" src="" alt="Hình thơ AI" />
+          <div class="result-img-overlay">
+            <span class="result-tag" id="resultTag"></span>
+          </div>
+        </div>
+        <div class="result-poem-wrap">
+          <h2 class="result-title" id="resultTitle"></h2>
+          <div class="result-divider"></div>
+          <p class="result-poem-text" id="resultText"></p>
+          <div class="result-meta">
+            <span id="resultStyle"></span>
+            <span id="resultMood"></span>
+          </div>
+          <div class="result-actions">
+            <button class="action-btn" onclick="copyPoem()">📋 Sao Chép</button>
+            <button class="action-btn" onclick="sharePoem()">🔗 Chia Sẻ</button>
+            <button class="action-btn" onclick="downloadPoem()">⬇ Tải Về</button>
+            <button class="action-btn primary" onclick="saveToGallery()">💾 Lưu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <section class="gen-history" id="genHistory" style="display:none;">
+    <div class="section-header">
+      <span class="section-tag">Lịch Sử</span>
+      <h2>Thơ Bạn<br /><em>Đã Tạo</em></h2>
+    </div>
+    <div class="history-grid" id="historyGrid"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+        <p>Nơi cảm hứng được sinh ra từ trí tuệ nhân tạo.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Khám Phá</h4>
+        <a href="gallery.html">Thư Viện Thơ</a>
+        <a href="generate.html">Tạo Thơ AI</a>
+        <a href="about.html">Về Chúng Tôi</a>
+      </div>
+      <div class="footer-links">
+        <h4>Cộng Đồng</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Nhận Cảm Hứng Mỗi Ngày</h4>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Email của bạn..." />
+          <button onclick="subscribeNewsletter(this)">Đăng Ký</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PoetryAI. Được tạo ra với ❤ và AI.</p>
+    </div>
+  </footer>
+
+  <script src="poems-data.js"></script>
+  <script src="app.js"></script>
+  <script src="generate.js"></script>
+</body>
+</html>

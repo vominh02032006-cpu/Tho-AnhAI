@@ -1,0 +1,59 @@
+/* ===== GALLERY PAGE ===== */
+.gallery-page { padding: 60px; }
+
+.filter-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
+}
+.filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.tab {
+  padding: 8px 20px; border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: transparent; color: var(--text-light);
+  font-size: 0.84rem; cursor: pointer; transition: all 0.3s;
+}
+.tab:hover, .tab.active { background: var(--brown); color: var(--white); border-color: var(--brown); }
+
+.sort-bar select {
+  padding: 9px 16px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--white); color: var(--text);
+  font-size: 0.84rem; outline: none; cursor: pointer;
+}
+
+/* MASONRY */
+.masonry-grid {
+  columns: 4; column-gap: 20px;
+}
+.masonry-card {
+  break-inside: avoid; margin-bottom: 20px;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 4px 20px rgba(26,20,16,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer; display: block; text-decoration: none; color: inherit;
+}
+.masonry-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.masonry-card img { width: 100%; display: block; object-fit: cover; }
+.masonry-body { padding: 18px; }
+.masonry-body .card-tag { margin-bottom: 8px; }
+.masonry-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; color: var(--dark); margin-bottom: 8px;
+}
+.masonry-body p {
+  font-size: 0.82rem; color: var(--text-light);
+  font-style: italic; line-height: 1.7; margin-bottom: 12px;
+}
+.masonry-meta { display: flex; gap: 14px; font-size: 0.78rem; color: var(--text-light); opacity: 0; transition: opacity 0.3s; }
+.masonry-card:hover .masonry-meta { opacity: 1; }
+
+.load-more-wrap { text-align: center; margin-top: 48px; }
+
+@media (max-width: 1200px) { .masonry-grid { columns: 3; } }
+@media (max-width: 900px)  { .masonry-grid { columns: 2; } .gallery-page { padding: 40px 32px; } }
+@media (max-width: 560px)  { .masonry-grid { columns: 1; } .gallery-page { padding: 32px 20px; } }
+
+@media (max-width: 1200px) { .masonry-grid { columns: 3; } }
+@media (max-width: 900px)  { .masonry-grid { columns: 2; } .gallery-page { padding: 40px 32px; } }
+@media (max-width: 560px)  { .masonry-grid { columns: 1; } .gallery-page { padding: 32px 16px; } .filter-bar { flex-direction: column; align-items: flex-start; } }

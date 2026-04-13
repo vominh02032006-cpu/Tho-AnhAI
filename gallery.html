@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thư Viện Thơ — PoetryAI</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="gallery.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="gallery.html" class="active">Thư Viện</a></li>
+      <li><a href="generate.html">Tạo Thơ</a></li>
+      <li><a href="guide.html">Trạm AI</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+    </ul>
+    <a href="auth.html" class="btn-nav">Đăng Nhập</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="page-hero-tag">✦ Thư Viện</span>
+    <h1>Kho Tàng<br /><em>Thơ AI</em></h1>
+  </div>
+
+  <!-- FILTER BAR -->
+  <section class="gallery-page">
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="tab active" data-filter="all">✦ Tất Cả</button>
+        <button class="tab" data-filter="nature">🌿 Thiên Nhiên</button>
+        <button class="tab" data-filter="love">❤ Tình Yêu</button>
+        <button class="tab" data-filter="life">🌆 Cuộc Sống</button>
+        <button class="tab" data-filter="dream">✨ Giấc Mơ</button>
+      </div>
+      <div class="sort-bar">
+        <select id="sortSelect" onchange="sortPoems(this.value)">
+          <option value="likes">Yêu thích nhất</option>
+          <option value="views">Xem nhiều nhất</option>
+          <option value="newest">Mới nhất</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- MASONRY GRID -->
+    <div class="masonry-grid" id="galleryGrid">
+      <!-- JS inject -->
+    </div>
+
+    <div class="load-more-wrap">
+      <button class="btn-outline" id="loadMoreBtn" onclick="loadMore()">Xem Thêm</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+        <p>Nơi cảm hứng được sinh ra từ trí tuệ nhân tạo.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Khám Phá</h4>
+        <a href="gallery.html">Thư Viện Thơ</a>
+        <a href="generate.html">Tạo Thơ AI</a>
+        <a href="about.html">Về Chúng Tôi</a>
+      </div>
+      <div class="footer-links">
+        <h4>Cộng Đồng</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Nhận Cảm Hứng Mỗi Ngày</h4>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Email của bạn..." />
+          <button onclick="subscribeNewsletter(this)">Đăng Ký</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PoetryAI. Được tạo ra với ❤ và AI.</p>
+    </div>
+  </footer>
+
+  <script src="poems-data.js"></script>
+  <script src="app.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

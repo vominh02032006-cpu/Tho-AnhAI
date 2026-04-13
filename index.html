@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PoetryAI — Cảm Hứng Thơ Từ Trí Tuệ Nhân Tạo</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Trang Chủ</a></li>
+      <li><a href="gallery.html">Thư Viện</a></li>
+      <li><a href="generate.html">Tạo Thơ</a></li>
+      <li><a href="guide.html">Trạm AI</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+    </ul>
+    <a href="auth.html" class="btn-nav">Đăng Nhập</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-tag">✦ AI × Thơ × Nghệ Thuật</span>
+      <h1 class="hero-title">Nơi Cảm Hứng<br /><em>Được Sinh Ra</em></h1>
+      <p class="hero-sub">Khám phá những bài thơ và hình ảnh được tạo ra bởi trí tuệ nhân tạo — nơi ngôn ngữ và nghệ thuật hòa quyện thành một.</p>
+      <div class="hero-actions">
+        <a href="generate.html" class="btn-primary">✦ Tạo Thơ Ngay</a>
+        <a href="gallery.html" class="btn-ghost">Xem Thư Viện</a>
+      </div>
+    </div>
+    <div class="hero-poem-card">
+      <div class="poem-card floating">
+        <img src="https://picsum.photos/seed/couple-rain-street/400/520" alt="Hình thơ" />
+        <div class="poem-overlay">
+          <p class="poem-text">"Mưa rơi trên phố vắng chiều nay,<br />Nhớ em như nhớ một vầng mây.<br />Trôi qua rồi mất không tìm lại,<br />Chỉ còn hương cũ vấn vương đây..."</p>
+          <span class="poem-author">— PoetryAI · Nhớ Em</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FEATURED POEMS -->
+  <section class="home-featured">
+    <div class="section-header">
+      <span class="section-tag">Nổi Bật Hôm Nay</span>
+      <h2>Tác Phẩm<br /><em>Được Yêu Thích Nhất</em></h2>
+    </div>
+    <div class="featured-hero-grid" id="featuredGrid">
+      <!-- JS inject -->
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+    <div class="section-header">
+      <span class="section-tag">Khám Phá</span>
+      <h2>Chủ Đề<br /><em>Phong Phú</em></h2>
+    </div>
+    <div class="cat-grid">
+      <a href="gallery.html?cat=nature" class="cat-card" style="--img:url('https://picsum.photos/seed/mountain-sunrise-fog/600/400')">
+        <div class="cat-overlay">
+          <span class="cat-icon">🌿</span>
+          <h3>Thiên Nhiên</h3>
+          <p>5 bài thơ</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=love" class="cat-card" style="--img:url('https://picsum.photos/seed/couple-rain-street/600/400')">
+        <div class="cat-overlay">
+          <span class="cat-icon">❤</span>
+          <h3>Tình Yêu</h3>
+          <p>5 bài thơ</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=life" class="cat-card" style="--img:url('https://picsum.photos/seed/night-city-lights-street/600/400')">
+        <div class="cat-overlay">
+          <span class="cat-icon">🌆</span>
+          <h3>Cuộc Sống</h3>
+          <p>5 bài thơ</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=dream" class="cat-card" style="--img:url('https://picsum.photos/seed/dreamy-forest-light/600/400')">
+        <div class="cat-overlay">
+          <span class="cat-icon">✨</span>
+          <h3>Giấc Mơ</h3>
+          <p>5 bài thơ</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- LATEST POEMS GRID -->
+  <section class="home-latest">
+    <div class="section-header">
+      <span class="section-tag">Mới Nhất</span>
+      <h2>Vừa Được<br /><em>AI Sáng Tác</em></h2>
+    </div>
+    <div class="latest-grid" id="latestGrid"><!-- JS inject --></div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="gallery.html" class="btn-outline">Xem Tất Cả Thơ</a>
+    </div>
+  </section>
+
+  <!-- GENERATE CTA -->
+  <section class="home-cta">
+    <div class="cta-inner">
+      <div class="cta-text">  
+        <span class="section-tag" style="color:var(--gold)">AI Sáng Tác</span>
+        <h2>Tạo Bài Thơ<br /><em style="color:var(--gold)">Của Riêng Bạn</em></h2>
+        <p>Chỉ cần nhập một từ khóa, AI sẽ tạo ra bài thơ và hình ảnh dành riêng cho bạn trong vài giây.</p>
+        <a href="generate.html" class="btn-primary" style="background:var(--gold);color:var(--dark)">Bắt Đầu Sáng Tác</a>
+      </div>
+      <div class="cta-preview">
+        <div class="cta-card">
+          <img src="https://picsum.photos/seed/dreamy-ocean-blue/500/340" alt="" />
+          <div class="cta-card-poem">
+            <p>"Tôi mơ thấy biển xanh vô tận,<br />Sóng vỗ bờ như tiếng thở dài..."</p>
+            <span>— PoetryAI · Biển Trong Mơ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="PoetryAI" class="nav-logo-img" /></a>
+        <p>Nơi cảm hứng được sinh ra từ trí tuệ nhân tạo.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Khám Phá</h4>
+        <a href="gallery.html">Thư Viện Thơ</a>
+        <a href="generate.html">Tạo Thơ AI</a>
+        <a href="about.html">Về Chúng Tôi</a>
+      </div>
+      <div class="footer-links">
+        <h4>Cộng Đồng</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Nhận Cảm Hứng Mỗi Ngày</h4>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Email của bạn..." />
+          <button onclick="subscribeNewsletter(this)">Đăng Ký</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PoetryAI. Được tạo ra với ❤ và AI.</p>
+    </div>
+  </footer>
+
+  <script src="poems-data.js"></script>
+  <script src="app.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
